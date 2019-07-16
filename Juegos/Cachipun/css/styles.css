@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Titillium+Web&display=swap');
 
 :root {
-    --primary-color: #003699;
+    --primary-color: #f8c291;
     --dark-color: #333333;
     --light-color: #f4f4f4;
     --lose-color: #dc3545;
@@ -15,11 +15,15 @@
     margin: 0;
 }
 
+html, body { 
+    min-height: 100% 
+}
+
 body {
     font-family: 'Titillium Web', sans-serif;
     line-height: 1.6;
-    background: #fff;
     color: #333;
+    background-color: #f6f6f6;
 }
 
 .container {
@@ -38,13 +42,9 @@ body {
     font-size: 1rem;
     cursor: pointer;
     outline: none;
-    border: none;
-    margin-bottom: 1rem;
-}
-
-.restart-btn:hover {
-    background: var(--primary-color);
-    color: #fff;
+    border: gray groove 2px;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .header {
@@ -61,10 +61,12 @@ body {
     grid-template-columns: repeat(2, 1fr);
     font-size: 1.2rem;
     color: #fff;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 .score p:first-child {
-    background: var(--primary-color);
+    background: var(--dark-color);
 }
 
 .score p:last-child {
@@ -74,13 +76,15 @@ body {
 .choices {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 2rem;
-    margin-top: 3rem;
+    grid-gap: 6rem;
+    margin-top: 2rem;
     text-align: center;
 }
 
 .choice {
     cursor: pointer;
+    color: #F7B070;
+    border-radius: 50%;
 }
 
 .choice:hover {
@@ -107,6 +111,7 @@ body {
     }
 }
 
+/* Modal */
 .modal {
     display: none;
     position: fixed;
@@ -125,7 +130,7 @@ body {
     margin: 10% auto;
     width: 350px;
     border-radius: 10px;
-    padding: 2rem;
+    padding: 1rem;
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
     animation-name: modalopen;
     animation-duration: var(--modal-duration);
@@ -152,7 +157,7 @@ body {
 
 .modal-result {
     display: inline-block;
-    /*padding: 25px;*/
     margin-top: 15px;
     margin-bottom: 5px;
+    color: #F7B070;
 }

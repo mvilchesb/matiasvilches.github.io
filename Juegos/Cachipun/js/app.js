@@ -43,7 +43,20 @@ const getWinner = (p, c) => {
 }
 
 const showWinner = (winner, playerChoise, computerChoice) => {
+    // Text in spanish
+    let playerChoiseES = ''
+    let computerChoiceES = ''
+
+    if (playerChoise === 'rock') playerChoiseES = 'piedra' 
+    else if (playerChoise === 'paper') playerChoiseES = 'papel' 
+    else playerChoiseES = 'tijeras'
+
+    if (computerChoice === 'rock') computerChoiceES = 'piedra'
+    else if (computerChoice === 'paper') computerChoiceES = 'papel'
+    else computerChoiceES = 'tijeras'
+    
     if (winner === 'player') {
+        // Increase the score
         scoreboard.player++
 
         // Show modal result
@@ -51,23 +64,34 @@ const showWinner = (winner, playerChoise, computerChoice) => {
             <h2 class="text-win">Punto para ti</h2>
             <div class="modal-result">
                 <i class="fas fa-hand-${playerChoise} fa-6x"></i>
+                &nbsp;&nbsp;&nbsp;
                 <i class="fas fa-hand-${computerChoice} fa-6x"></i>
             </div>
-            <p>Tú escogiste <strong>${playerChoise}</strong> y tu rival escogió <strong>${computerChoice}</strong></p>
+            <p>Tú escogiste <strong>${playerChoiseES}</strong> y tu rival escogió <strong>${computerChoiceES}</strong>.</p>
         `
     } else if (winner === 'computer') {
+        // Increase the score
         scoreboard.computer++
 
+        // Show modal result
         result.innerHTML = `
             <h2 class="text-lose">Punto para tu rival</h2>
-            <i class="fas fa-hand-${computerChoice} fa-10x"></i>
-            <p>Tú escogiste [x] y tu rival escogió <strong>${computerChoice}</strong></p>
+            <div class="modal-result">
+                <i class="fas fa-hand-${playerChoise} fa-6x"></i>
+                &nbsp;&nbsp;&nbsp;
+                <i class="fas fa-hand-${computerChoice} fa-6x"></i>
+            </div>
+            <p>Tú escogiste <strong>${playerChoiseES}</strong> y tu rival escogió <strong>${computerChoiceES}</strong>.</p>
         `
     } else {
         result.innerHTML = `
             <h2>Es un empate</h2>
-            <i class="fas fa-hand-${computerChoice} fa-10x"></i>
-            <p>Tú escogiste [x] y tu rival escogió <strong>${computerChoice}</strong></p>
+            <div class="modal-result">
+                <i class="fas fa-hand-${playerChoise} fa-6x"></i>
+                &nbsp;&nbsp;&nbsp;
+                <i class="fas fa-hand-${computerChoice} fa-6x"></i>
+            </div>
+            <p>Tú escogiste <strong>${playerChoiseES}</strong> y tu rival escogió <strong>${computerChoiceES}</strong>.</p>
         `
     }
 
@@ -75,9 +99,13 @@ const showWinner = (winner, playerChoise, computerChoice) => {
     score.innerHTML = `
         <p>Tú: ${scoreboard.player}</p>
         <p>Tu rival: ${scoreboard.computer}</p>
-    ` 
+    `
 
     modal.style.display = 'block'
+
+    setTimeout(() => {
+        modal.style.display = 'none'
+    }, 3000)
 }
 
 const clearModal = e => {
@@ -92,6 +120,8 @@ const restartGame = () => {
         <p>Tú: 0</p>
         <p>Tu rival: 0</p>
     `
+
+    restart.style.display = 'none'
 }
 
 // Event listeners
