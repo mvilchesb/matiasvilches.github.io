@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Título -->
+    <title>Cachipún!</title>
+
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!-- Font Awesome CDN -->
+    <script src="https://kit.fontawesome.com/40f99f8165.js"></script>
+
+    <!-- Hojas de estilos CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <div class="container h-100">
+
+        <!-- Header -->
+        <header class="header">
+            <h1 class="font-effect-shadow-multiple">Cachipún!</h1>
+            <button id="restart" class="restart-btn">Reiniciar juego</button>
+            <div id="score" class="score"></div>
+        </header>
+
+        <!-- Opciones -->
+        <div class="choices">
+            <div class="fa-stack fa-7x">
+                <div class="fas fa-circle fa-stack-2x"></div>
+                <div id="rock" class="choice fas fa-hand-rock fa-stack-1x"></div>
+            </div>
+            <div class="fa-stack fa-7x">
+                <div class="fas fa-circle fa-stack-2x"></div>
+                <div id="paper" class="choice fas fa-hand-paper fa-stack-1x"></div>
+            </div>
+            <div class="fa-stack fa-7x">
+                <div class="fas fa-circle fa-stack-2x"></div>
+                <div id="scissors" class="choice fas fa-hand-scissors fa-stack-1x"></div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal">
+            <div id="result" class="modal-content"></div>
+        </div>
+
+    </div>
+
+    <blockquote class="blockquote footer">
+        <footer class="blockquote-footer">By Matías Vilches in July of 2019.</footer>
+    </blockquote>
+
+    <!-- JS referencia -->
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>

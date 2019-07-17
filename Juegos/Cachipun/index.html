@@ -15,7 +15,7 @@
     <!-- Font Awesome CDN -->
     <script src="https://kit.fontawesome.com/40f99f8165.js"></script>
 
-    <!-- Hojas de estilos CSS -->
+    <!-- Hoja de estilos -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
@@ -24,46 +24,51 @@
     <!--
         *   Por añadir:
         >   Añadir efecto al cerrar el modal.
-        >   El que llega a los 5 puntos, gana la partida.
+        >   El que llega a los 5 puntos, gana la partida. (https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal_bottom)
+        >   Contador de victorias y derrotas, que solo se visualice cuando se abra el modal de victoria.
+        >   Diseño responsivo para poder jugar desde móviles.
+        >   Permitir girar dispositivo móvil para que se puega jugar.
+        >   Alerta de error al no ingresar nombre de usuario. (https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal2)
+
+        *   Por corregir:
+        >   El bug del cierre automático del modal al clickear varias veces en una opción.
     -->
 
-    <div class="container mt-4">
+    <div class="container h-100 d-flex">
 
-        <!-- Header -->
-        <header class="header">
-            <h1 class="font-effect-shadow-multiple">Cachipún!</h1>
-            <button id="restart" class="restart-btn">Reiniciar juego</button>
-            <div id="score" class="score">
-                <p>Tú: 0</p>
-                <p>Tu rival: 0</p>
-            </div>
-        </header>
-
-        <!-- Opciones -->
-        <div class="choices">
-            <div class="fa-stack fa-7x">
-                <div class="fas fa-circle fa-stack-2x"></div>
-                <div id="rock" class="choice fas fa-hand-rock fa-stack-1x"></div>
-            </div>
-            <div class="fa-stack fa-7x">
-                <div class="fas fa-circle fa-stack-2x"></div>
-                <div id="paper" class="choice fas fa-hand-paper fa-stack-1x"></div>
-            </div>
-            <div class="fa-stack fa-7x">
-                <div class="fas fa-circle fa-stack-2x"></div>
-                <div id="scissors" class="choice fas fa-hand-scissors fa-stack-1x"></div>
-            </div>
-        </div>
-
-        <!-- Modal -->
-        <div class="modal">
-            <div id="result" class="modal-content"></div>
+        <div class="jumbotron text-center my-auto shadow bg-white rounded">
+            <h1 class="display-4">Cachipún!</h1>
+            <hr class="my-4">
+            <p class="lead">Ingresa un nombre de usuario para comenzar a jugar.</p>
+            <input type="text" id="username" class="form-control text-center">
+            <br><br>
+            <p class="lead">
+                <button class="btn btn-primary btn-lg" id="playGame">Jugar</button>
+            </p>
+            </form>
         </div>
 
     </div>
 
-    <!-- JS referencia -->
-    <script src="js/app.js"></script>
+    <blockquote class="blockquote footer">
+        <footer class="blockquote-footer">By Matías Vilches in July of 2019.</footer>
+    </blockquote>
+
+    <script>
+        const username = document.getElementById('username')
+        const playGame = document.getElementById('playGame')
+
+        const setUsername = () => {
+            if (username.value.trim().length > 0) {
+                sessionStorage.setItem('username', username.value.trim())
+                window.location = 'cachipun.html'
+            } else {
+                console.log('Alerta de error...')
+            }
+        }
+
+        playGame.addEventListener('click', setUsername)
+    </script>
 
 </body>
 

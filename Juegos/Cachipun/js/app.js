@@ -1,13 +1,14 @@
+/*
+    *   Version of cachipun without js framework.
+*/
+
 const choices = document.querySelectorAll('.choice')
 const modal = document.querySelector('.modal')
 const score = document.getElementById('score')
 const result = document.getElementById('result')
 const restart = document.getElementById('restart')
-
-const scoreboard = {
-    player: 0,
-    computer: 0
-}
+const scoreboard = {player: 0, computer: 0}
+let usernameValue
 
 // Play game
 const play = e => {
@@ -97,7 +98,7 @@ const showWinner = (winner, playerChoise, computerChoice) => {
 
     // Show score
     score.innerHTML = `
-        <p>Tú: ${scoreboard.player}</p>
+        <p>${usernameValue}: ${scoreboard.player}</p>
         <p>Tu rival: ${scoreboard.computer}</p>
     `
 
@@ -117,14 +118,31 @@ const restartGame = () => {
     scoreboard.computer = 0
 
     score.innerHTML = `
-        <p>Tú: 0</p>
+        <p>${usernameValue}: 0</p>
         <p>Tu rival: 0</p>
     `
 
     restart.style.display = 'none'
 }
 
+const getUsername = () => {
+    usernameValue = sessionStorage.getItem('username')
+
+    if (usernameValue === null) {
+        window.location = 'index.html'
+    }
+}
+
+const scoreDefault = () => {
+    score.innerHTML = `
+        <p>${usernameValue}: 0</p>
+        <p>Tu rival: 0</p>
+    `
+}
+
 // Event listeners
 choices.forEach(choice => choice.addEventListener('click', play))
 window.addEventListener('click', clearModal)
 restart.addEventListener('click', restartGame)
+window.addEventListener('load', getUsername)
+window.addEventListener('load', scoreDefault)

@@ -16,7 +16,7 @@
 }
 
 html, body { 
-    min-height: 100% 
+    height: 100%;
 }
 
 body {
@@ -161,3 +161,28 @@ body {
     margin-bottom: 5px;
     color: #F7B070;
 }
+
+/*
+    >   signIn.html
+*/
+
+.jumbotron {
+    width: 75%;
+    margin: auto;
+    padding: 40px;
+}
+
+#username {
+    width: 50%;
+    display: inline-block;
+    font-size: large;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
