@@ -1,7 +1,3 @@
-/*
-    *   Version of cachipun without js framework.
-*/
-
 const choices = document.querySelectorAll('.choice')
 const modal = document.querySelector('.modal')
 const score = document.getElementById('score')

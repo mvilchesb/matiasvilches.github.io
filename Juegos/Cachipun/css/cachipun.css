@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web&display=swap');
+
+/* Menos de 575px de ancho */
+@media (max-width: 575px) {
+    .p-2 {
+        padding: .2rem !important;
+    }
+}
+
+/* Menos de 400px de alto */
+@media (max-height: 400px) {
+    .footer {
+        position: inherit;
+    }
+}
+
+/* Más de 401px de alto */
+@media (min-height: 401px) {
+    .footer {
+        position: fixed;
+    }
+}
+
+/* Más de 576px de ancho */
+@media (min-width: 576px) {
+    h1 {
+        font-size: 3.5rem;
+    }
+
+    /* p {
+        font-size: 1.25rem;
+    } */
+}
+
+/* Más de 992px de ancho */
+@media (min-width: 992px) {
+    .scoreboard {
+        width: 75%;
+        margin: auto;
+    }
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Titillium Web', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f6f6f6;
+}
+
+.title {
+    padding: 3%;
+}
+
+.hand {
+    color: pink;
+}
+
+.footer {
+    left: 0;
+    bottom: 0;
+}
+

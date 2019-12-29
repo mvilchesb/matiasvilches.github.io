@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- Título -->
-    <title>Cachipún!</title>
+    <title>¡Cachipún!</title>
 
     <!-- Bootstrap CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -15,48 +15,66 @@
     <!-- Font Awesome CDN -->
     <script src="https://kit.fontawesome.com/40f99f8165.js"></script>
 
-    <!-- Hoja de estilos -->
+    <!-- Hojas de estilos -->
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/index.css">
+
+    <!-- Ícono de la pestaña -->
+    <link rel="shortcut icon" href="img/m-icon.ico" type="image/x-icon">
 </head>
 
 <body>
-
     <!--
         *   Por añadir:
-        >   Añadir efecto al cerrar el modal.
         >   El que llega a los 5 puntos, gana la partida. (https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal_bottom)
         >   Contador de victorias y derrotas, que solo se visualice cuando se abra el modal de victoria.
         >   Diseño responsivo para poder jugar desde móviles.
         >   Permitir girar dispositivo móvil para que se puega jugar.
-        >   Alerta de error al no ingresar nombre de usuario. (https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal2)
 
         *   Por corregir:
         >   El bug del cierre automático del modal al clickear varias veces en una opción.
     -->
 
+    <!-- Container -->
     <div class="container h-100 d-flex">
 
+        <!-- Jumbotron -->
         <div class="jumbotron text-center my-auto shadow bg-white rounded">
-            <h1 class="display-4">Cachipún!</h1>
+            <h1>¡Cachipún!</h1>
             <hr class="my-4">
-            <p class="lead">Ingresa un nombre de usuario para comenzar a jugar.</p>
+            <p>Ingresa un nombre de usuario para comenzar a jugar.</p>
             <input type="text" id="username" class="form-control text-center">
             <br><br>
-            <p class="lead">
-                <button class="btn btn-primary btn-lg" id="playGame">Jugar</button>
-            </p>
-            </form>
+            <button class="btn btn-primary btn-lg" id="playGame">Jugar</button>
         </div>
 
+        <!-- Error modal -->
+        <div id="errorModal" class="error-modal">
+            <div class="error-modal-content">
+                <div class="error-modal-header">
+                    <span class="error-close">&times;</span>
+                    <h2>Error</h2>
+                </div>
+                <div class="error-modal-body">
+                    <p>Debes ingresar un nombre de usuario.</p>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <blockquote class="blockquote footer">
-        <footer class="blockquote-footer">By Matías Vilches in July of 2019.</footer>
-    </blockquote>
+    <!-- Footer -->
+    <footer class="footer mt-auto py-3 w-100">
+        <div class="container text-center ">
+            <span class="text-muted">By Matías Vilches in July of 2019.</span>
+        </div>
+    </footer>
 
+    <!-- Script JS -->
     <script>
         const username = document.getElementById('username')
         const playGame = document.getElementById('playGame')
+        const errorModal = document.getElementById('errorModal')
+        const span = document.getElementsByClassName("error-close")[0];
 
         const setUsername = () => {
             if (username.value.trim().length > 0) {
@@ -64,6 +82,17 @@
                 window.location = 'cachipun.html'
             } else {
                 console.log('Alerta de error...')
+                errorModal.style.display = 'block'
+
+                span.onclick = () => {
+                    errorModal.style.display = 'none'
+                }
+
+                window.onclick = e => {
+                    if (e.target == errorModal) {
+                        errorModal.style.display = 'none'
+                    }
+                }
             }
         }
 
